@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 
 import { Container } from "@/components/container";
+import { useEffect, useState } from "react";
 
 const navItems = [
   { href: "#top", label: "Home" },
@@ -10,6 +13,37 @@ const navItems = [
 ];
 
 export function Header() {
+  const [active, setActive] = useState("#top");
+
+  useEffect(() => {
+    setActive(window.location.hash || "#top");
+
+    const sections = navItems
+      .map(item => document.querySelector(item.href))
+      .filter(Boolean);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const newHash = `#${entry.target.id}`;
+            setActive(newHash);
+            // update browser URL without reload
+            window.history.replaceState(null, "", newHash);
+          }
+        });
+      },
+      {
+        threshold: 0.6,
+      }
+    );
+
+    sections.forEach(section => observer.observe(section!));
+
+    return () => observer.disconnect();
+  }, []);
+
+
   return (
     <header className="sticky top-0 pt-5 z-50">
       <Container className="flex h-16 items-center justify-center">
@@ -25,7 +59,10 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="transition hover:text-white"
+                onClick={() => setActive(item.href)}
+                className={`inline-flex transition-transform duration-200 active:scale-90 ${
+                  active === item.href ? "scale-125 text-white" : "scale-100"
+                }`}
               >
                 {item.label}
               </Link>
@@ -36,3 +73,4 @@ export function Header() {
     </header>
   );
 }
+ 

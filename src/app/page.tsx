@@ -6,7 +6,7 @@ import { SkillsGrid } from "@/components/skills-grid";
 
 export default function Home() {
   return (
-    <div id="top" className="relative min-h-screen bg-transparent">
+    <div className="relative min-h-screen bg-transparent">
       <Header />
       <main>
         <Hero />
