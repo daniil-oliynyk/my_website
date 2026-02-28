@@ -8,9 +8,9 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 const HERO_TITLES = [
-  "Software Engineer",
-  "Android Specialist",
-  "Avid Outdoorsman ",
+  "a Software Engineer",
+  "an Android Specialist",
+  "an Avid Outdoorsman ",
 ];
 
 export function Hero() {
@@ -63,9 +63,6 @@ export function Hero() {
             Hello, I&apos;m <span className="bg-gradient-to-r from-violet-600 via-violet-400 to-violet-600 bg-clip-text text-transparent">Daniil</span>
           </h1>
           <div className="flex min-h-[52px] flex-col items-center gap-3 text-lg font-medium text-text-secondary sm:flex-row">
-            <span className="font-display text-5xl text-text-primary sm:text-5xl">
-              a&nbsp;
-            </span>
             <Typewriter
               phrases={HERO_TITLES}
               className="font-display text-5xl text-white sm:text-5xl"
@@ -89,10 +86,23 @@ export function Hero() {
               className="h-5 w-5 lg:h-6 lg:w-6"
             />
           </h2>
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-text-secondary sm:text-base">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          <p
+            className={`mt-4 max-w-[600px] text-sm leading-relaxed text-text-secondary transition-opacity duration-[1600ms] ease-out sm:text-base ${
+              isInView ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            I have been a Software Engineer for 3+ years with most of my professional focus on Android Open Source Project (AOSP). I have
+            worked across the stack developing services and AIDL interfaces for the infotainment connectivity platform, building out 
+            SDKs and their APIs, and fullstack android applications all primarily in Java.              
+          </p>
+          <p
+            className={`mt-4 max-w-[600px] text-sm leading-relaxed text-text-secondary transition-opacity duration-[1600ms] ease-out sm:text-base ${
+              isInView ? "opacity-100" : "opacity-0"
+            }`}
+            style={{ transitionDelay: isInView ? "180ms" : "0ms" }}
+          >
+            I have a passion for all things tech and software engineering, constantly learning and exploring new technologies and open to
+            all sorts of opportunities.              
           </p>
            <span className="flex gap-6 mt-4"> 
               <a href="https://github.com/daniil-oliynyk" target="_blank" rel="noopener noreferrer">

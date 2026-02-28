@@ -47,12 +47,6 @@ export function Header() {
   return (
     <header className="sticky top-0 pt-5 z-50">
       <Container className="flex h-16 items-center justify-center">
-        {/* <Link
-          href="#top"
-          className="font-display text-lg font-semibold text-text-primary tracking-wide bg-gradient-to-r from-violet-600 via-violet-400 to-violet-600 bg-clip-text text-transparent"
-        >
-          Daniil Oliynyk
-        </Link> */}
         <div className="hidden w-fit rounded-full border border-white/10 px-16 py-5 backdrop-blur-xl sm:block">
           <nav className="flex items-center gap-20 text-base font-medium text-text-secondary">
             {navItems.map((item) => (
@@ -61,7 +55,7 @@ export function Header() {
                 href={item.href}
                 onClick={() => setActive(item.href)}
                 className={`inline-flex transition-transform duration-200 active:scale-90 ${
-                  active === item.href ? "scale-125 text-white" : "scale-100"
+                  active === item.href ? "scale-130 text-white" : "scale-100"
                 }`}
               >
                 {item.label}
