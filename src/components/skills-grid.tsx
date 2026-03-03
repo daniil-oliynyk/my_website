@@ -71,16 +71,16 @@ export function SkillsGrid() {
     <section
       id="skills"
       ref={sectionRef}
-      className="relative flex min-h-[calc(100svh-4rem)] items-center py-12 sm:py-16"
+      className="relative flex min-h-[calc(100svh-4rem)] items-center py-10 sm:py-16"
     >
       <Container className="relative w-full max-w-7xl">
-        <h2 className="font-display text-5xl font-semibold text-white sm:text-6xl">
+        <h2 className="font-display text-4xl font-semibold text-white sm:text-6xl">
           My Stack
         </h2>
 
-        <div className="mt-12 space-y-8 sm:space-y-10">
+        <div className="mt-8 space-y-7 sm:mt-12 sm:space-y-10">
           {STACK_SECTIONS.map((section, rowIndex) => (
-            <div key={section.title} className="grid gap-5 sm:grid-cols-[170px_1fr] sm:items-center">
+            <div key={section.title} className="grid gap-3 sm:grid-cols-[170px_1fr] sm:items-center sm:gap-5">
               <p
                 className={`bg-gradient-to-r from-violet-600 via-violet-400 to-violet-600 bg-clip-text text-lg font-semibold text-transparent transition-all duration-700 ease-out sm:text-xl ${
                   isInView ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"
@@ -89,7 +89,7 @@ export function SkillsGrid() {
               >
                 {section.title}
               </p>
-              <div className="flex flex-wrap gap-4 ">
+              <div className="flex flex-wrap gap-2.5 sm:gap-4">
                 {section.skills.map((skill, chipIndex) => (
                   <div
                     key={`${section.title}-${skill.name}`}
@@ -98,15 +98,15 @@ export function SkillsGrid() {
                     }`}
                     style={{ transitionDelay: `${180 + rowIndex * 140 + chipIndex * 55}ms` }}
                   >
-                    <article className="inline-flex cursor-pointer items-center gap-2.5 rounded-full border border-white/10 bg-[#191c20]/90 px-5 py-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition duration-200 hover:scale-[1.1] hover:border-white/20 hover:bg-[#22262b] hover:shadow-[0_0_36px_-18px_rgba(168,139,255,0.75)] active:scale-90">
+                    <article className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/10 bg-[#191c20]/90 px-3.5 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition duration-200 hover:scale-[1.1] hover:border-white/20 hover:bg-[#22262b] hover:shadow-[0_0_36px_-18px_rgba(168,139,255,0.75)] sm:gap-2.5 sm:px-5 sm:py-2.5 sm:hover:scale-[1.1] active:!scale-[0.92]">
                       <Image
                         src={skill.src}
                         alt={skill.name}
                         width={22}
                         height={22}
-                        className="h-[22px] w-[22px] object-contain"
+                        className="h-4 w-4 object-contain sm:h-[22px] sm:w-[22px]"
                       />
-                      <span className="text-base font-medium text-text-secondary">{skill.name}</span>
+                      <span className="text-sm font-medium text-text-secondary sm:text-base">{skill.name}</span>
                     </article>
                   </div>
                 ))}

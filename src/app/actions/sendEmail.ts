@@ -8,16 +8,27 @@ export async function sendEmail(data: { name: string; email: string; message: st
     
     if (data.company) return;
 
-    await resend.emails.send({
+    if (!data.name || !data.email || !data.message) {
+    throw new Error("Missing required fields");
+  }
+
+    const {ret, error} = await resend.emails.send({
         from: 'Contact <onboarding@resend.dev>',
         to: "daniil.oliynyk@yahoo.ca",
         subject: `New email from ${data.name}`,
         replyTo: data.email,
         text: `
             Name: ${data.name}
-            Email: ${data.email}
+            Email: ${data.email}    
 
             ${data.message}
         `,
     });
+
+    if (error) {
+        throw new Error(error.message);
+    }
+
+    return {success: true}
+
 }

@@ -45,7 +45,7 @@ export function Header() {
 
 
   return (
-    <header className="sticky top-0 pt-5 z-50">
+    <header className="sticky top-0 z-50 hidden pt-5 sm:block">
       <Container className="flex h-16 items-center justify-center">
         <div className="hidden w-fit rounded-full border border-white/10 px-16 py-5 backdrop-blur-xl sm:block">
           <nav className="flex items-center gap-20 text-base font-medium text-text-secondary">
@@ -55,7 +55,7 @@ export function Header() {
                 href={item.href}
                 onClick={() => setActive(item.href)}
                 className={`inline-flex transition-transform duration-200 active:scale-90 ${
-                  active === item.href ? "scale-130 text-white" : "scale-100"
+                  active === item.href ? "scale-[1.35] text-white" : "scale-100"
                 }`}
               >
                 {item.label}

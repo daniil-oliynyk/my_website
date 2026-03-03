@@ -72,23 +72,23 @@ export function WorkExperience() {
     <section
       id="cards"
       ref={sectionRef}
-      className="relative flex min-h-[calc(100svh-4rem)] items-center py-12 sm:py-16"
+      className="relative flex min-h-[calc(100svh-4rem)] items-center py-10 sm:py-16"
     >
       <Container className="relative w-full max-w-6xl">
         <h2 className="text-center font-display text-3xl font-semibold text-white sm:text-4xl">
           Work Experience
         </h2>
 
-        <div className="relative mt-10 pl-6 sm:pl-10">
+        <div className="relative mt-8 pl-4 sm:mt-10 sm:pl-10">
           <div className="pointer-events-none absolute bottom-2 left-0 top-2 w-px bg-gradient-to-b from-violet-600 via-violet-400 to-violet-600" />
 
           <div className="space-y-5 sm:space-y-6">
             {EXPERIENCE_ITEMS.map((item, index) => (
               <article
                 key={`${item.role}-${item.period}`}
-                className="relative rounded-xl border border-white/10 bg-[#111416]/80 px-5 py-4 shadow-card backdrop-blur-sm transition duration-300 ease-out hover:scale-[1.015] hover:shadow-[0_0_36px_-18px_rgba(168,139,255,0.75)] sm:px-6"
+                className="relative rounded-xl border border-white/10 bg-[#111416]/80 px-4 py-4 shadow-card backdrop-blur-sm transition duration-300 ease-out hover:scale-[1.01] hover:shadow-[0_0_36px_-18px_rgba(168,139,255,0.75)] sm:px-6"
               >
-                <span className="absolute -left-[1.72rem] top-8 h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_0_2px_rgba(20,21,21,1)] sm:-left-[2.22rem]" />
+                <span className="absolute -left-[1.2rem] top-8 h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_0_2px_rgba(20,21,21,1)] sm:-left-[2.22rem]" />
 
                 <div
                   className={`transition-all duration-700 ease-out ${
@@ -98,7 +98,7 @@ export function WorkExperience() {
                 >
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                     <div>
-                      <h3 className="font-display text-lg text-white">{item.role}</h3>
+                      <h3 className="font-display text-base text-white sm:text-lg">{item.role}</h3>
                       <p className="mt-1 text-sm bg-gradient-to-r from-violet-600 via-violet-400 to-violet-600 bg-clip-text text-transparent">
                         {item.company}  
                       </p>
@@ -106,13 +106,13 @@ export function WorkExperience() {
                          {item.location}
                       </p>
                     </div>
-                    <span className="inline-flex w-fit rounded-full border border-white/15 bg-white/[0.03] px-3 py-1 text-[10px] uppercase tracking-[0.12em] text-text-secondary">
+                    <span className="inline-flex w-fit rounded-full border border-white/15 bg-white/[0.03] px-2.5 py-1 text-[10px] uppercase tracking-[0.12em] text-text-secondary sm:px-3">
                       {item.period}
                     </span>
                   </div>
 
                   {item.highlights.length > 0 ? (
-                    <ul className="mt-4 space-y-2 text-xs leading-relaxed text-text-secondary sm:text-sm">
+                    <ul className="mt-4 space-y-2 text-sm leading-relaxed text-text-secondary sm:text-sm">
                       {item.highlights.map((point, pointIndex) => (
                         <li
                           key={point}

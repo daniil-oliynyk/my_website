@@ -5,7 +5,6 @@ import Image from "next/image";
 import { Typewriter } from "@/components/typewriter";
 import { Container } from "@/components/container";
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 
 const HERO_TITLES = [
   "a Software Engineer",
@@ -40,15 +39,15 @@ export function Hero() {
     <section 
       id="top"
       ref={sectionRef}
-      className="relative min-h-[calc(100svh-4rem)] overflow-hidden py-10 sm:py-12">
+      className="relative min-h-[calc(100svh-4rem)] overflow-hidden py-8 sm:py-12">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-10 h-64 w-64 -translate-x-1/2 rounded-full bg-aurora-soft blur-3xl" />
         <div className="absolute right-16 top-24 h-40 w-40 rounded-full bg-mint-soft blur-3xl" />
         <div className="absolute -bottom-10 left-20 h-52 w-52 rounded-full bg-aurora-soft blur-3xl" />
       </div>
 
-      <Container className="relative z-10 mt-[8svh] flex w-full flex-col sm:mt-[12svh] lg:mt-[16svh] lg:flex-row lg:items-center">
-        <div className="relative mx-auto flex h-[300px] w-[300px] flex-shrink-0 items-center justify-center lg:mx-0">
+      <Container className="relative z-10 mt-[4svh] flex w-full flex-col sm:mt-[10svh] lg:mt-[16svh] lg:flex-row lg:items-center">
+        <div className="relative mx-auto flex h-[220px] w-[220px] flex-shrink-0 items-center justify-center sm:h-[260px] sm:w-[260px] lg:mx-0 lg:h-[300px] lg:w-[300px]">
           <Image
             src="/images/bitmoji3.png"
             alt="Daniil Oliynyk bitmoji"
@@ -59,13 +58,13 @@ export function Hero() {
           />
         </div>
         <div className="mx-auto flex w-full flex-col items-center text-center lg:mx-0 lg:items-start lg:text-left">
-          <h1 className="font-display text-5xl font-semibold text-white">
+          <h1 className="font-display text-4xl font-semibold text-white sm:text-5xl">
             Hello, I&apos;m <span className="bg-gradient-to-r from-violet-600 via-violet-400 to-violet-600 bg-clip-text text-transparent">Daniil</span>
           </h1>
-          <div className="flex min-h-[52px] flex-col items-center gap-3 text-lg font-medium text-text-secondary sm:flex-row">
+          <div className="flex min-h-[44px] flex-col items-center gap-2 text-lg font-medium text-text-secondary sm:min-h-[52px] sm:gap-3 sm:flex-row">
             <Typewriter
               phrases={HERO_TITLES}
-              className="font-display text-5xl text-white sm:text-5xl"
+              className="font-display text-3xl text-white sm:text-5xl"
               caretClassName="h-7 sm:h-8"
             />
           </div>
@@ -74,9 +73,9 @@ export function Hero() {
         </div>
       </Container>
 
-      <Container className="relative z-10 flex flex-col lg:items-left ">
+      <Container className="relative z-10 flex flex-col lg:items-left">
         <div className="mx-auto mt-5 w-full text-left lg:mx-0 lg:items-start ">
-          <h2 className="text-lg lg:text-xl text-white/90 tracking-wide flex flex-wrap items-center justify-center lg:justify-start gap-2">
+          <h2 className="flex flex-wrap items-center justify-center gap-2 text-base tracking-wide text-white/90 sm:text-lg lg:justify-start lg:text-xl">
             <span>Currently, I&apos;m a Software Engineer at General Motors</span>
             <Image
               src="/images/General_Motors.svg"
@@ -104,14 +103,14 @@ export function Hero() {
             I have a passion for all things tech and software engineering, constantly learning and exploring new technologies and open to
             all sorts of opportunities.              
           </p>
-           <span className="flex gap-6 mt-4"> 
+           <span className="mt-4 flex flex-wrap items-center justify-center gap-5 sm:gap-6 lg:justify-start"> 
               <a href="https://github.com/daniil-oliynyk" target="_blank" rel="noopener noreferrer">
                 <Image
                   src="/images/github.png"
                   alt="github"
                   width={7}
                   height={7}
-                  className="h-7 w-7 lg:h-7 lg:w-7 cursor-pointer transition opacity-70 hover:opacity-110 hover:scale-115 "
+                  className="h-7 w-7 cursor-pointer transition opacity-70 hover:scale-110 hover:opacity-100"
                   priority
                 />
               </a>              
@@ -121,7 +120,7 @@ export function Hero() {
                   alt="linkedin"
                   width={7}
                   height={7}
-                  className="h-7 w-7 lg:h-7 lg:w-7 cursor-pointer transition opacity-70 hover:opacity-110 hover:scale-115 "
+                  className="h-7 w-7 cursor-pointer transition opacity-70 hover:scale-110 hover:opacity-100"
                   priority
                 />
               </a>    
@@ -131,7 +130,7 @@ export function Hero() {
                   alt="resume"
                   width={7}
                   height={7}
-                  className="h-7 w-7 lg:h-7 lg:w-7 cursor-pointer transition opacity-70 hover:opacity-200 hover:scale-115 "
+                  className="h-7 w-7 cursor-pointer transition opacity-70 hover:scale-110 hover:opacity-100"
                   priority
                 />
               </a>          
