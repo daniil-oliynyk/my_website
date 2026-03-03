@@ -150,7 +150,7 @@ export function ContactCard() {
               <button
                 type="submit"
                 disabled={isPending}
-                className="inline-flex h-10 w-full items-center justify-center rounded-md border border-white/20 bg-white/[0.08] text-sm font-semibold shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_12px_30px_-18px_rgba(168,139,255,0.7)] backdrop-blur-md transition duration-200 hover:bg-white/[0.14] hover:border-white/30 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70 sm:h-11"
+                className="inline-flex cursor-pointer h-10 w-full items-center justify-center rounded-md border border-white/20 bg-white/[0.08] text-sm font-semibold shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_12px_30px_-18px_rgba(168,139,255,0.7)] backdrop-blur-md transition duration-200 hover:bg-white/[0.14] hover:border-white/30 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70 sm:h-11"
               >
                 <span className="bg-gradient-to-r from-violet-600 via-violet-400 to-violet-600 bg-clip-text text-transparent">
                    {isPending ? "Sending..." : "Send Message"}

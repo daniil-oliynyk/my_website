@@ -33,7 +33,7 @@ export default function Home() {
           <ContactCard />
         </main>
         <footer className="pb-12 text-center text-xs text-text-muted">
-          © {new Date().getFullYear()} Daniil Oliynyk. Crafted with Next.js.
+          © {new Date().getFullYear()} Daniil Oliynyk.
         </footer>
       </div>
     </div>

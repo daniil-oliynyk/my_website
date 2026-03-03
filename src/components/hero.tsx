@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Typewriter } from "@/components/typewriter";
 import { Container } from "@/components/container";
 import { useEffect, useRef, useState } from "react";
+import GradientText from "./gradient-text";
 
 const HERO_TITLES = [
   "a Software Engineer",
@@ -59,9 +60,18 @@ export function Hero() {
         </div>
         <div className="mx-auto flex w-full flex-col items-center text-center lg:mx-0 lg:items-start lg:text-left">
           <h1 className="font-display text-4xl font-semibold text-white sm:text-5xl">
-            Hello, I&apos;m <span className="bg-gradient-to-r from-violet-600 via-violet-400 to-violet-600 bg-clip-text text-transparent">Daniil</span>
-          </h1>
-          <div className="flex min-h-[44px] flex-col items-center gap-2 text-lg font-medium text-text-secondary sm:min-h-[52px] sm:gap-3 sm:flex-row">
+            {/* Hello, I&apos;m <span className="bg-gradient-to-r from-violet-600 via-violet-400 to-violet-600 bg-clip-text text-transparent">Daniil</span> */}
+          Hello, I&apos;m 
+          <span className="pl-4">
+            <GradientText
+              colors={["#5227FF","#f5abf2ff","#B19EEF"]}
+              animationSpeed={4}
+              showBorder={false}
+            >
+              Daniil
+            </GradientText>
+          </span>
+          </h1><div className="flex min-h-[44px] flex-col items-center gap-2 text-lg font-medium text-text-secondary sm:min-h-[52px] sm:gap-3 sm:flex-row">
             <Typewriter
               phrases={HERO_TITLES}
               className="font-display text-3xl text-white sm:text-5xl"
