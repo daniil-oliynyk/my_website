@@ -86,7 +86,7 @@ export function WorkExperience() {
             {EXPERIENCE_ITEMS.map((item, index) => (
               <article
                 key={`${item.role}-${item.period}`}
-                className="relative rounded-xl border border-white/10 bg-[#111416]/80 px-4 py-4 shadow-card backdrop-blur-sm transition duration-300 ease-out hover:scale-[1.01] hover:shadow-[0_0_36px_-18px_rgba(168,139,255,0.75)] sm:px-6"
+                className="relative rounded-xl border border-white/10 bg-[#f5f0f0]/5 backdrop-blur-xl px-4 py-4 shadow-card backdrop-blur-sm transition duration-300 ease-out hover:scale-[1.01] hover:shadow-[0_0_36px_-18px_rgba(168,139,255,0.75)] sm:px-6"
               >
                 <span className="absolute -left-[1.2rem] top-8 h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_0_2px_rgba(20,21,21,1)] sm:-left-[2.22rem]" />
 

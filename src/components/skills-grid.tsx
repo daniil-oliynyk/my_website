@@ -98,7 +98,7 @@ export function SkillsGrid() {
                     }`}
                     style={{ transitionDelay: `${180 + rowIndex * 140 + chipIndex * 55}ms` }}
                   >
-                    <article className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/10 bg-[#191c20]/90 px-3.5 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition duration-200 hover:scale-[1.1] hover:border-white/20 hover:bg-[#22262b] hover:shadow-[0_0_36px_-18px_rgba(168,139,255,0.75)] sm:gap-2.5 sm:px-5 sm:py-2.5 sm:hover:scale-[1.1] active:!scale-[0.92]">
+                    <article className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-white/10 bg-[#f5f0f0]/5 px-3.5 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition duration-200 hover:scale-[1.1] hover:border-white/20 hover:bg-[#f5f0f0]/5 hover:shadow-[0_0_36px_-18px_rgba(168,139,255,0.75)] sm:gap-2.5 sm:px-5 sm:py-2.5 sm:hover:scale-[1.1] active:!scale-[0.92]">
                       <Image
                         src={skill.src}
                         alt={skill.name}

@@ -3,14 +3,14 @@ import { ContactCard } from "@/components/contact-card";
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { SkillsGrid } from "@/components/skills-grid";
-import Particles from "@/components/particles";
+import { VantaBackground } from "@/components/vantabackground";
 
 
 export default function Home() {
   return (
     <div className="relative min-h-screen bg-transparent">
       <div className="fixed inset-0 z-0">
-        <Particles
+        {/* <Particles
           particleCount={900}
           particleSpread={7}
           speed={0.09}
@@ -21,7 +21,8 @@ export default function Home() {
           moveParticlesOnHover={true}
           particleHoverFactor={0.5}
           className="h-full w-full"
-        />
+        /> */}
+        <VantaBackground />
       </div>
 
       <div className="relative z-10">

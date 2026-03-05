@@ -127,7 +127,7 @@ export function ContactCard() {
                 value={form.name}
                 onChange={handleChange}
                 required={true}
-                className="h-10 w-full rounded-md border border-white/10 bg-[#171b1f]/80 px-3.5 text-sm text-text-primary outline-none transition placeholder:text-text-muted focus:border-aurora-light sm:h-11 sm:px-4"
+                className="h-10 w-full rounded-md border border-white/10 bg-[#171b1f]/25 px-3.5 text-sm text-text-primary outline-none transition placeholder:text-text-muted focus:border-aurora-light sm:h-11 sm:px-4"
               />
               <input
                 name="email"
@@ -136,7 +136,7 @@ export function ContactCard() {
                 value={form.email}
                 onChange={handleChange}
                 required={true}
-                className="h-10 w-full rounded-md border border-white/10 bg-[#171b1f]/80 px-3.5 text-sm text-text-primary outline-none transition placeholder:text-text-muted focus:border-aurora-light sm:h-11 sm:px-4"
+                className="h-10 w-full rounded-md border border-white/10 bg-[#171b1f]/25 px-3.5 text-sm text-text-primary outline-none transition placeholder:text-text-muted focus:border-aurora-light sm:h-11 sm:px-4"
               />
               <textarea
                 name="message"
@@ -145,14 +145,14 @@ export function ContactCard() {
                 value={form.message}
                 onChange={handleChange}
                 required={true}
-                className="w-full resize-none rounded-md border border-white/10 bg-[#171b1f]/80 px-3.5 py-2.5 text-sm text-text-primary outline-none transition placeholder:text-text-muted focus:border-aurora-light sm:px-4 sm:py-3"
+                className="w-full resize-none rounded-md border border-white/10 bg-[#171b1f]/25 px-3.5 py-2.5 text-sm text-text-primary outline-none transition placeholder:text-text-muted focus:border-aurora-light sm:px-4 sm:py-3"
               />
               <button
                 type="submit"
                 disabled={isPending}
                 className="inline-flex cursor-pointer h-10 w-full items-center justify-center rounded-md border border-white/20 bg-white/[0.08] text-sm font-semibold shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_12px_30px_-18px_rgba(168,139,255,0.7)] backdrop-blur-md transition duration-200 hover:bg-white/[0.14] hover:border-white/30 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70 sm:h-11"
               >
-                <span className="bg-gradient-to-r from-violet-600 via-violet-400 to-violet-600 bg-clip-text text-transparent">
+                <span className="text-white">
                    {isPending ? "Sending..." : "Send Message"}
                 </span>
               </button>
