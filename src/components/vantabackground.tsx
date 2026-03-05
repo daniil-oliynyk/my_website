@@ -1,6 +1,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import type * as THREEType from "three";
+
+declare global {
+  interface Window {
+    THREE?: typeof THREEType;
+  }
+}
 
 export function VantaBackground() {
 
@@ -14,11 +21,13 @@ export function VantaBackground() {
         return;
       }
 
-      const THREE = await import("three");
+      const threeModule = await import("three");
+      const THREE: typeof THREEType =
+        (threeModule as { default?: typeof THREEType }).default ?? (threeModule as typeof THREEType);
       const wavesModule = await import("vanta/dist/vanta.waves.min");
       const WAVES = wavesModule.default;
 
-      (window as Window & { THREE?: typeof THREE }).THREE = THREE;
+      window.THREE = THREE;
 
       vantaEffect = WAVES({
         THREE,
