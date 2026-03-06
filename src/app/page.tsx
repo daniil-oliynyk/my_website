@@ -4,11 +4,13 @@ import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { SkillsGrid } from "@/components/skills-grid";
 import { VantaBackground } from "@/components/vantabackground";
+import { Analytics } from "@vercel/analytics/next"
 
 
 export default function Home() {
   return (
     <div className="relative min-h-screen bg-transparent">
+      <Analytics />
       <div className="fixed inset-0 z-0">
         {/* <Particles
           particleCount={900}
