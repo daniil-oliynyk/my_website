@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 
 import { Container } from "@/components/container";
 
@@ -48,6 +49,9 @@ const EXPERIENCE_ITEMS = [
 export function WorkExperience() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [isInView, setIsInView] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [transitionDirection, setTransitionDirection] = useState(1);
+  const activeExperience = EXPERIENCE_ITEMS[activeIndex];
 
   useEffect(() => {
     const target = sectionRef.current;
@@ -60,7 +64,7 @@ export function WorkExperience() {
       ([entry]) => {
         setIsInView(entry.isIntersecting);
       },
-      { threshold: 0.1, rootMargin: "0px 0px -5% 0px" }
+      { threshold: 0.2, rootMargin: "0px 0px -8% 0px" }
     );
 
     observer.observe(target);
@@ -68,70 +72,153 @@ export function WorkExperience() {
     return () => observer.disconnect();
   }, []);
 
+  function handleExperienceChange(nextIndex: number) {
+    if (nextIndex === activeIndex) {
+      return;
+    }
+
+    setTransitionDirection(nextIndex > activeIndex ? 1 : -1);
+    setActiveIndex(nextIndex);
+  }
+
   return (
     <section
       id="cards"
       ref={sectionRef}
       className="relative flex min-h-[calc(100svh-4rem)] items-center py-10 sm:py-16"
     >
-      <Container className="relative w-full max-w-6xl">
-        <h2 className="text-center font-display text-3xl font-semibold text-white sm:text-4xl">
-          Work Experience
-        </h2>
+      <Container
+        className={`relative w-full max-w-7xl transition-all duration-700 ease-out ${
+          isInView ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
+        }`}
+      >
+        <div className="grid gap-7 sm:gap-9">
+          <div className="space-y-4">
+            <p className="text-xs uppercase tracking-[0.2em] text-text-muted">Career Journey</p>
+            <h2 className="font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+              Work Experience
+            </h2>
+            <p className="max-w-2xl text-sm leading-relaxed text-text-secondary sm:text-base">
+              Roles, systems, and outcomes across platform engineering, education, and telecom software.
+            </p>
+          </div>
 
-        <div className="relative mt-8 pl-4 sm:mt-10 sm:pl-10">
-          <div className="pointer-events-none absolute bottom-2 left-0 top-2 w-px bg-gradient-to-b from-violet-600 via-violet-400 to-violet-600" />
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,17rem)_minmax(0,1fr)] lg:gap-10">
+            <div className="grid gap-1 border-l border-white/10 pl-3 sm:grid-cols-3 sm:gap-2 sm:border-l-0 sm:pl-0 lg:grid-cols-1 lg:border-l lg:pl-4">
+              {EXPERIENCE_ITEMS.map((item, index) => {
+                const isActive = index === activeIndex;
 
-          <div className="space-y-5 sm:space-y-6">
-            {EXPERIENCE_ITEMS.map((item, index) => (
-              <article
-                key={`${item.role}-${item.period}`}
-                className="relative rounded-xl border border-white/10 bg-[#f5f0f0]/5 backdrop-blur-xl px-4 py-4 shadow-card backdrop-blur-sm transition duration-300 ease-out hover:scale-[1.01] hover:shadow-[0_0_36px_-18px_rgba(168,139,255,0.75)] sm:px-6"
-              >
-                <span className="absolute -left-[1.2rem] top-8 h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_0_2px_rgba(20,21,21,1)] sm:-left-[2.22rem]" />
+                return (
+                  <button
+                    key={`${item.role}-${item.period}`}
+                    type="button"
+                    onClick={() => handleExperienceChange(index)}
+                    className={`min-h-[5.5rem] w-full border-l-2 px-3 py-3 text-left transition duration-200 active:scale-[0.98] ${
+                      isActive
+                        ? "border-violet-400 text-white"
+                        : "border-transparent text-text-secondary hover:border-white/30 hover:text-white"
+                    }`}
+                    aria-pressed={isActive}
+                  >
+                    <p className="text-[10px] uppercase tracking-[0.16em] text-text-muted">{item.period}</p>
+                    <p className="mt-2 text-sm font-semibold text-white">{item.company}</p>
+                    <p className="mt-1 text-xs text-text-secondary">{item.role}</p>
+                  </button>
+                );
+              })}
+            </div>
 
-                <div
-                  className={`transition-all duration-700 ease-out ${
-                    isInView ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-                  }`}
-                  style={{ transitionDelay: `${120 + index * 140}ms` }}
+            <article className="flex min-h-[29rem] flex-col border-t border-white/10 pt-5 sm:min-h-[31rem] sm:pt-6 lg:min-h-[33rem] lg:border-l lg:border-t-0 lg:pl-8 lg:pt-1">
+              <AnimatePresence mode="wait" custom={transitionDirection}>
+                <motion.div
+                  key={activeIndex}
+                  custom={transitionDirection}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  variants={{
+                    enter: (direction: number) => ({
+                      opacity: 0,
+                      x: direction > 0 ? 28 : -28,
+                      filter: "blur(3px)",
+                    }),
+                    center: {
+                      opacity: 1,
+                      x: 0,
+                      filter: "blur(0px)",
+                    },
+                    exit: (direction: number) => ({
+                      opacity: 0,
+                      x: direction > 0 ? -28 : 28,
+                      filter: "blur(3px)",
+                    }),
+                  }}
+                  transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+                  className="will-change-transform"
                 >
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                    <div>
-                      <h3 className="font-display text-base text-white sm:text-lg">{item.role}</h3>
-                      <p className="mt-1 text-sm bg-gradient-to-r from-violet-600 via-violet-400 to-violet-600 bg-clip-text text-transparent">
-                        {item.company}  
-                      </p>
-                      <p className="mt-1 text-sm bg-gradient-to-r from-violet-600 via-violet-400 to-violet-600 bg-clip-text text-transparent">
-                         {item.location}
-                      </p>
-                    </div>
-                    <span className="inline-flex w-fit rounded-full border border-white/15 bg-white/[0.03] px-2.5 py-1 text-[10px] uppercase tracking-[0.12em] text-text-secondary sm:px-3">
-                      {item.period}
-                    </span>
+                  <div className="mb-3 h-px overflow-hidden">
+                    <motion.div
+                      className="h-full bg-gradient-to-r from-transparent via-violet-400 to-transparent"
+                      initial={{ opacity: 0, scaleX: 0.35 }}
+                      animate={{ opacity: 1, scaleX: 1 }}
+                      exit={{ opacity: 0, scaleX: 0.35 }}
+                      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                    />
                   </div>
 
-                  {item.highlights.length > 0 ? (
-                    <ul className="mt-4 space-y-2 text-sm leading-relaxed text-text-secondary sm:text-sm">
-                      {item.highlights.map((point, pointIndex) => (
-                        <li
-                          key={point}
-                          className={`flex gap-2 transition-all duration-700 ease-out ${
-                            isInView ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
-                          }`}
-                          style={{
-                            transitionDelay: `${280 + index * 140 + pointIndex * 80}ms`,
-                          }}
-                        >
-                          <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-aurora-light" />
-                          <span>{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : null}
-                </div>
-              </article>
-            ))}
+                  <div className="grid min-h-[7.5rem] gap-4 border-b border-white/10 pb-4 sm:grid-cols-[1fr_auto] sm:items-start">
+                    <div className="min-w-0">
+                      <h3 className="font-display text-2xl leading-tight text-white sm:text-3xl">
+                        {activeExperience.role}
+                      </h3>
+                      <p className="mt-2 bg-gradient-to-r from-violet-600 via-violet-400 to-violet-600 bg-clip-text text-base font-medium text-transparent">
+                        {activeExperience.company}
+                      </p>
+                      <p className="mt-1 text-sm text-text-muted">{activeExperience.location}</p>
+                    </div>
+                    <p className="inline-flex h-fit w-fit rounded-full border border-white/15 bg-white/[0.03] px-3 py-1 text-[11px] uppercase tracking-[0.16em] text-text-secondary">
+                      {activeExperience.period}
+                    </p>
+                  </div>
+
+                  <motion.ul
+                    className="mt-4 h-[34dvh] space-y-3 overflow-y-auto pr-2 text-sm leading-relaxed text-text-secondary sm:h-[36dvh] sm:text-[15px] lg:h-[38dvh]"
+                    initial="hidden"
+                    animate="show"
+                    variants={{
+                      hidden: {},
+                      show: {
+                        transition: {
+                          staggerChildren: 0.055,
+                          delayChildren: 0.08,
+                        },
+                      },
+                    }}
+                  >
+                    {activeExperience.highlights.map((point) => (
+                      <motion.li
+                        key={point}
+                        className="grid grid-cols-[auto_1fr] gap-3"
+                        variants={{
+                          hidden: {
+                            opacity: 0,
+                            x: transitionDirection > 0 ? 10 : -10,
+                          },
+                          show: {
+                            opacity: 1,
+                            x: 0,
+                          },
+                        }}
+                        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                      >
+                        <span className="mt-[0.5rem] h-1.5 w-1.5 rounded-full bg-violet-400" />
+                        <span>{point}</span>
+                      </motion.li>
+                    ))}
+                  </motion.ul>
+                </motion.div>
+              </AnimatePresence>
+            </article>
           </div>
         </div>
       </Container>
