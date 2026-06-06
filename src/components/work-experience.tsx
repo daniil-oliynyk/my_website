@@ -12,11 +12,12 @@ const EXPERIENCE_ITEMS = [
     location: "Markham, ON, Canada",
     period: "2023 - Present",
     highlights: [
-      "Core contributor on GM’s Android Platform Connectivity team, responsible for building out Android services, SDKs and APIs used across multiple products and device configurations.",
+      "Core contributor on GM’s Android Infotainment Platform Connectivity team, responsible for building out Android services, SDKs and APIs in Java used across multiple products and device configurations.",
       "Implemented OpenTelemetry framework into services, enabling deep visibility into system performance and stability.",
-      "Authored a comprehensive design document outlining Java API methods and defining key metrics, logs, events, and traces to improve system monitoring and debugging.",
+      "Responsible for bring-up of the USB system service during Android pastry upgrade and next-generation infotainment hardware bring-up.",
+      "Migrated internal Android testing applications from legacy Java/XML to Jetpack Compose and Kotlin.",
+      "Deployed JUnit, Mockito/Powermock frameworks and integrated it into SonarQube, enabling continuous quality enforcement.",
       "Increased unit test coverage from 0% to 90%, dramatically improving release confidence and regression detection.",
-      "Built an Android app in Java to automate multi-device connect/disconnect events for CarPlay and Android Auto validation, reducing total dependency on heavy automated test frameworks, thus cutting hardware costs by ~$2,500 per developer.",
       "Built a full-stack internal analytics platform (React, Flask, MongoDB) to visualize performance and regression test results and metrics at scale.",
       "Triaged and resolved high severity production defects, improving platform stability and reducing recurring incidents."
     ],
